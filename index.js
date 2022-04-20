@@ -3,7 +3,6 @@ const fs = require('fs/promises');
 
 // Screenshot the webpage in view in the browser
 async function screenshot() {
-	// Code Here
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto('https://learnwebcode.github.io/practice-requests/');
@@ -12,8 +11,7 @@ async function screenshot() {
 }
 
 // Screenshot fullpage in browser
-async function screenshot_fullpage() {
-	// Code Here
+async function screenshotFullpage() {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto('https://en.wikipedia.org/wiki/JavaScript');
@@ -21,9 +19,8 @@ async function screenshot_fullpage() {
 	await browser.close();
 }
 
-// Extract something from a webpage in browser
-async function extract_name() {
-	// Code Here
+// Extract text from a webpage in browser
+async function extractName() {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto('https://learnwebcode.github.io/practice-requests/');
@@ -41,8 +38,8 @@ async function extract_name() {
 	await browser.close();
 }
 
-async function extract_photos() {
-	// Code Here
+// Extract photos from a webpage in browser
+async function extractPhotos() {
 	const browser = await puppeteer.launch();
 	const page = await browser.newPage();
 	await page.goto('https://learnwebcode.github.io/practice-requests/');
@@ -61,10 +58,27 @@ async function extract_photos() {
 	await browser.close();
 }
 
+// Extract photos from a webpage in browser
+async function extractClickedData() {
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto('https://learnwebcode.github.io/practice-requests/');
+
+	// use page.click({id}) to click a button on the page
+	await page.click('#clickme');
+	const clickedData = await page.$eval('#data', (el) => el.textContent);
+	// Print data to the console
+	console.log(clickedData);
+
+	await browser.close();
+}
+
 // screenshot();
 
-// screenshot_fullpage();
+// screenshotFullpage();
 
-// extract_name();
+// extractName();
 
-extract_photos();
+// extractPhotos();
+
+extractClickedData();
