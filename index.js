@@ -66,6 +66,7 @@ async function extractClickedData() {
 
 	// use page.click({id}) to click a button on the page
 	await page.click('#clickme');
+	// create a variable that stores the content from the click based on the ID
 	const clickedData = await page.$eval('#data', (el) => el.textContent);
 	// Print data to the console
 	console.log(clickedData);
@@ -73,12 +74,44 @@ async function extractClickedData() {
 	await browser.close();
 }
 
+// Extract sensative data from a form that has to have correct values
+async function extractSensativeData() {
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto('https://learnwebcode.github.io/practice-requests/');
+
+	// navigate to the type on the page with id, value wanted to be entered
+	await page.type('#ourfield', 'blue');
+	// perform the click of the button on the type selected, submit form
+	await page.click('#ourform button');
+	// once on the new page
+	await page.waitForNavigation();
+
+	// create a variable that stores the content from the new page based on the ID
+	const info = await page.$eval('#message', (el) => el.textContent);
+	console.log(info);
+
+	await browser.close();
+}
+
+/*--------------------------------
+			
+--------------------------------*/
+
+/* Will screenshot a webpage and save the screenshot to this folder */
 // screenshot();
 
+/* Will screenshot the FULL webpage and save the screenshot to this folder */
 // screenshotFullpage();
 
+/* Extract specific words/names from a webpage */
 // extractName();
 
+/* Extract photos from a webpage */
 // extractPhotos();
 
-extractClickedData();
+/* Extract clicked data from a webpage */
+// extractClickedData();
+
+/* Extract sensative info from a form */
+extractSensativeData();
