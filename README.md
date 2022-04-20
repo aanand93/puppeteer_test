@@ -1,6 +1,6 @@
 # Puppeteer Intro
 
-> This is a how to use guide for puppeteer. Multiple examples of different methods will be shown on how to scrape webpages for different types of data.
+> This is a how to use guide for puppeteer. Multiple examples of different methods will be shown on how to scrape webpages for different types of data. A basic understanding of html, css, and javascript will be needed to understand these methods.
 
 ## Set Up
 
