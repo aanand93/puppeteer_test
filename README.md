@@ -19,3 +19,10 @@
 
 3. > Choose whichever method you would like to run and call the function at the bottom of the component. Then run the component in the terminal.
    - `$ node index`
+
+## Mini Project Folders
+
+> Each project using puppeteer.js will be in each respective folder. Each folder will be accessing different sites with example methods of how to access specific data. Make sure when a file is run that the correct path is being called.
+
+- `$ node Supreme/supremeBot.js`
+- `$ node index.js`
