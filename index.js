@@ -114,4 +114,14 @@ async function extractSensativeData() {
 // extractClickedData();
 
 /* Extract sensative info from a form */
-extractSensativeData();
+// extractSensativeData();
+
+/* ------------------------------------------------*/
+/*-------------------Automation--------------------*/
+/* ------------------------------------------------*/
+
+// Run function every set interval
+setInterval(extractSensativeData, 5000);
+
+// Set for a specific interval ex: the 3rd friday of every month.
+cron.schedule('*/5 * * * * * *', extractSensativeData);
