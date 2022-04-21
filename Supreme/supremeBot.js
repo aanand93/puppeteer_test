@@ -8,12 +8,12 @@ async function extractHref() {
 	const page = await browser.newPage();
 	await page.goto('https://www.supremenewyork.com/shop/new/');
 
-	// $$eval() = select multiple elements
+	// $$eval() = select multiple elements, in this case link tags inside the inner-article class
 	const hrefs = await page.$$eval('.inner-article a', (links) => {
 		return links.map((x) => x.href);
 	});
 
-	// Create todays date for filename
+	// Create todays date for the filename
 	let today = new Date();
 	let dd = String(today.getDate()).padStart(2, '0');
 	let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -23,7 +23,7 @@ async function extractHref() {
 
 	for (const href of hrefs) {
 		const hrefPage = await page.goto(href);
-		// split the url at the last / and use the last poriton which is the image name
+		// Create a new file with the date the scraper was ran, post all the scraped info in list form.
 		await fs.writeFile(`New_Supreme_Items_${today}.txt`, hrefs.join('\r\n'));
 	}
 
