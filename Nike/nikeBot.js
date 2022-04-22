@@ -8,7 +8,7 @@ async function extractHref() {
 	const page = await browser.newPage();
 	await page.goto('https://www.nike.com/w/new-3n82y/');
 
-	// $$eval() = select multiple elements, in this case link tags inside the inner-article class
+	// $$eval() = select multiple elements, in this case link tags inside the product class
 	const hrefs = await page.$$eval('.product-card a', (links) => {
 		return links.map((x) => x.href);
 	});
